@@ -43,7 +43,7 @@ const options = {
             const now = new Date();
             localStorage.setItem('selectedData', selectedDates[0]);
             const selectData = new Date(localStorage.getItem('selectedData'));
-            
+
             if (!selectData) return;
 
             const diff = selectData - now;
@@ -64,9 +64,12 @@ const options = {
         };
 
         const onClick = () => {
+            startBtn.setAttribute('disabled', true);
             if (timerId) {
+                
                 clearInterval(timerId);
-            }
+                
+                }
             showTimer();
             timerId = setInterval(showTimer, 1000);
         };
