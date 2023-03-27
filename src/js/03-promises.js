@@ -13,15 +13,15 @@ function onSubmit(event) {
 
   for (let position = 1; position <= amountRef; position += 1) {
     createPromise(position, delayRef)
-    .then(({ position, delay }) => {
-      Notiflix.Notify.success(`Fulfilled promise ${position} in ${delay}ms`);
-    })
-    .then(() => {
-      form.reset();
-    })
-    .catch(({ position, delay }) => {
-      Notiflix.Notify.failure(`Rejected promise ${position} in ${delay}ms`);
-    });;
+      .then(({ position, delay }) => {
+        Notiflix.Notify.success(`Fulfilled promise ${position} in ${delay}ms`);
+      })
+      .then(() => {
+        form.reset();
+      })
+      .catch(({ position, delay }) => {
+        Notiflix.Notify.failure(`Rejected promise ${position} in ${delay}ms`);
+      });
     delayRef += stepRef;
   }
 }
@@ -41,4 +41,3 @@ function createPromise(position, delay) {
 
   return promise;
 }
-
